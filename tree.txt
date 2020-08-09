@@ -1,0 +1,146 @@
+  Type: INT
+    Id: a
+      Const: 12345
+  Type: INT
+    Id: minloc
+      Type: INT
+        Id: a
+      Type: INT
+        Id: low
+      Type: INT
+        Id: high
+      Type: INT
+        Id: i
+      Type: INT
+        Id: x
+      Type: INT
+        Id: k
+      Assign to: k
+        Id: k
+        Id: low
+      Assign to: x
+        Id: x
+        Id: a
+          Id: low
+      Assign to: i
+        Id: i
+        Op: +
+          Id: low
+          Const: 1
+      While
+        Op: <
+          Id: i
+          Id: high
+        If
+          Op: <
+            Id: a
+              Id: i
+            Id: x
+          Assign to: x
+            Id: x
+            Id: a
+              Id: i
+          Assign to: k
+            Id: k
+            Id: i
+          Assign to: x
+            Id: x
+            Op: +
+              Id: x
+              Id: x
+        Assign to: i
+          Id: i
+          Op: +
+            Id: i
+            Const: 1
+      Return
+        Id: k
+  Type: VOID
+    Id: sort
+      Type: INT
+        Id: b
+      Type: INT
+        Id: low
+      Type: INT
+        Id: high
+      Type: INT
+        Id: i
+      Type: INT
+        Id: k
+      Assign to: i
+        Id: i
+        Id: low
+      While
+        Op: <=
+          Id: i
+          Op: -
+            Id: high
+            Const: 1
+        Type: INT
+          Id: t
+        Assign to: k
+          Id: k
+          Id: minloc
+            Id: a
+            Id: i
+            Id: high
+        Assign to: t
+          Id: t
+          Id: a
+            Id: k
+        Assign to: a
+          Id: a
+            Id: k
+          Id: a
+            Id: i
+        Assign to: a
+          Id: a
+            Id: i
+          Id: t
+        Assign to: i
+          Id: i
+          Op: +
+            Id: i
+            Const: 1
+  Type: VOID
+    Id: main
+      Type: INT
+        Id: i
+      Type: INT
+        Id: vet
+          Const: 10
+      Assign to: i
+        Id: i
+        Const: 0
+      While
+        Op: <
+          Id: i
+          Const: 10
+        Assign to: vet
+          Id: vet
+            Id: i
+          Id: input
+        Assign to: i
+          Id: i
+          Op: +
+            Id: i
+            Const: 1
+      Id: sort
+        Id: vet
+        Const: 0
+        Const: 10
+      Assign to: i
+        Id: i
+        Const: 0
+      While
+        Op: <
+          Id: i
+          Const: 10
+        Id: output
+          Id: a
+            Const: 2
+        Assign to: i
+          Id: i
+          Op: +
+            Id: i
+            Const: 1

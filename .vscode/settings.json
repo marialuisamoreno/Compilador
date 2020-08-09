@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "globals.h": "c",
+        "util.h": "c",
+        "parser.tab.h": "c",
+        "symtab.h": "c",
+        "random": "c",
+        "analyze.h": "c",
+        "code.h": "c",
+        "cgen.h": "c"
+    }
+}
