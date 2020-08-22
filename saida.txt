@@ -1,0 +1,90 @@
+Sintatic Tree:
+
+  Type: INT
+    Id: gcd
+      Type: INT
+        Id: u
+      Type: INT
+        Id: v
+      If
+        Op: =
+          Id: v
+          Const: 0
+        Return
+          Id: u
+        Return
+          Id: gcd
+            Id: v
+            Op: -
+              Id: u
+              Op: *
+                Op: /
+                  Id: u
+                  Id: v
+                Id: v
+  Type: VOID
+    Id: main
+      Type: INT
+        Id: x
+      Type: INT
+        Id: y
+      Assign to: x
+        Id: x
+        Id: input
+      Assign to: y
+        Id: y
+        Id: input
+      Id: output
+        Id: gcd
+          Id: x
+          Id: y
+
+Symbol table:
+
+Variable Name        Location  Declaration      Line Numbers
+-------------------  --------  ---------------  -------------
+main input           9                |       |    8    9 
+main x               7         6   (1)|       |    6    8   10 
+main y               8         7   (1)|       |    7    9   10 
+GLOBAL main          6         5   (0)|       |    5 
+main output          10               |       |   10 
+GLOBAL gcd           2         1   (1)|       |    1 
+GLOBAL input         0         0   (1)|       |    0 
+main gcd             11               |       |   10 
+GLOBAL output        1         0   (0)|       |    0 
+gcd gcd              5                |       |    3 
+gcd u                3         1   (1)|       |    1    2    3    3 
+gcd v                4         1   (1)|       |    1    2    3    3    3 
+
+Intermediate Code:
+
+(FUNC, INT, gcd, -)
+(LOAD, u, -, -)
+(LOAD, v, -, -)
+(EQUAL, AUX0, v, 0)
+(IF_NOT, AUX0, LABEL0, -)
+(JR, u, -, -)
+(JUMP, LABEL1, -, -)
+(LABEL, LABEL0, -, -)
+(PARAM, v, -, -)
+(DIV, AUX1, u, v)
+(MULT, AUX2, AUX1, v)
+(SUB, v, u, AUX2)
+(PARAM, v, -, -)
+(CALL, gcd, 2, -)
+(JR, gcd, -, -)
+(LABEL, LABEL1, -, -)
+
+(FUNC, VOID, main, -)
+(ALOC_MEN, x, 1, -)
+(ALOC_MEN, y, 1, -)
+(CALL, input, 0, -)
+(ASSIGN, x, input, -)
+(CALL, input, 0, -)
+(ASSIGN, y, input, -)
+(PARAM, x, -, -)
+(PARAM, y, -, -)
+(CALL, gcd, 2, -)
+(PARAM, gcd, -, -)
+(CALL, output, 1, -)
+

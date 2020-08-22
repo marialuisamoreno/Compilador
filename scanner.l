@@ -1,6 +1,6 @@
 /*  
-    Andre Lucas 112175 
-    Maria Luisa 111859
+    Desenvolvido por Maria Luisa Santos Moreno Sanches
+    e por André Lucas Maegina na disciplina de Compiladores
 */
 
 %{
@@ -57,7 +57,7 @@ void fecharArq(){
     fclose(source);
 }
 
-int FreakShow (){
+int erroLexico (){
     printf("Erro lexico: %s na linha %d.\n", yytext, line_counter);
     return ERR;
 }
@@ -113,9 +113,9 @@ while                                 return WHILE;
 \r
 \t
 [ ]+
-{DIGIT}+({LETTER}|{DIGIT}|{OTHER})*   return FreakShow();
-{LETTER}+({LETTER}|{DIGIT}|{OTHER})*  return FreakShow();
-{OTHER}+({LETTER}|{DIGIT})*{OTHER}*   return FreakShow();
+{DIGIT}+({LETTER}|{DIGIT}|{OTHER})*   return erroLexico();
+{LETTER}+({LETTER}|{DIGIT}|{OTHER})*  return erroLexico();
+{OTHER}+({LETTER}|{DIGIT})*{OTHER}*   return erroLexico();
 %%
 
 // int main(int argc, char *argv[])

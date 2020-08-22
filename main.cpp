@@ -50,7 +50,8 @@ extern int semantical(FILE *listing);
 int main(int argc, char **argv){
   TreeNode *raiz;
   int erro;
-  cout << "\nParser em execução...\n"; 
+  // cout << "\nParser em execução...\n"; 
+  cout << "Sintatic Tree:\n\n"; 
   if(argc == 1) return 1;
   abrirArq(argv[1]);
   if(argc > 2)
@@ -64,6 +65,7 @@ int main(int argc, char **argv){
   buildSymtab(raiz);
   erro = semantical(listing);
   if(!erro)
+    cout << "\nIntermediate Code:\n\n";
     codeGen(raiz, "code.txt");
   fecharArq();
   return 0;

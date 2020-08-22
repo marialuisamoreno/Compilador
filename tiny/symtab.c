@@ -297,6 +297,7 @@ void variableNotDeclared(FILE * listing){
                     }
                     s = s->next;
                 }
+                free(name);
                 l = l->next;
             }
         }

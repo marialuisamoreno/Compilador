@@ -490,8 +490,8 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "scanner.l"
 /*  
-    Andre Lucas 112175 
-    Maria Luisa 111859
+    Desenvolvido por Maria Luisa Santos Moreno Sanches
+    e por André Lucas Maegina na disciplina de Compiladores
 */
 #line 7 "scanner.l"
 #include <stdlib.h>
@@ -547,7 +547,7 @@ void fecharArq(){
     fclose(source);
 }
 
-int FreakShow (){
+int erroLexico (){
     printf("Erro lexico: %s na linha %d.\n", yytext, line_counter);
     return ERR;
 }
@@ -1015,17 +1015,17 @@ YY_RULE_SETUP
 case 34:
 YY_RULE_SETUP
 #line 116 "scanner.l"
-return FreakShow();
+return erroLexico();
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 117 "scanner.l"
-return FreakShow();
+return erroLexico();
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 118 "scanner.l"
-return FreakShow();
+return erroLexico();
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
